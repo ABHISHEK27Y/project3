@@ -1,101 +1,63 @@
-# AI Mental Health Therapist
+# 🧠 SafeSpace - AI Mental Health Therapist
 
-SafeSpace is an AI-powered companion for emotional support. It listens, responds with empathy, and knows when to escalate to real help — combining a conversational agent with practical tools like emergency calling and therapist lookup.
+SafeSpace is an AI-powered mental health therapist designed to provide empathetic, evidence-based guidance in a conversational tone. Built with a responsive Streamlit frontend and a robust FastAPI backend, the agent leverages advanced language models to offer a safe, supportive environment for users.
 
-It's built with an agentic architecture using LangGraph and LangChain, a healthcare-focused LLM (MedGemma, run through Ollama), a FastAPI backend, and a Streamlit chat interface on top.
+## 🚀 Features
 
-**Disclaimer:** This is a learning project and is not a replacement for professional mental health care. If you or someone you know is in crisis, please reach out to a licensed professional or local emergency services.
+- **Empathetic Conversations**: Powered by MedGemma (via Ollama) and GPT-4, the AI provides emotionally attuned and practical support.
+- **Emergency Action**: Integrated with Twilio to automatically place an emergency call if a user expresses a crisis or suicidal ideation.
+- **Therapist Locator**: Automatically recommends nearby licensed therapists when professional help is requested.
+- **Modern UI**: A clean, accessible chat interface built with Streamlit for a seamless user experience.
 
-## Features
+## 🛠️ Tech Stack
 
-- Conversational chat interface built with Streamlit
-- An AI agent (LangGraph) that decides when to use which tool
-- Healthcare-tuned responses via MedGemma
-- Emergency call escalation through Twilio
-- Location-aware lookup for therapists/professional support
-- FastAPI backend connecting the frontend and the agent
+- **Frontend**: Streamlit, Python
+- **Backend**: FastAPI, Uvicorn
+- **AI / Agent Framework**: LangChain, LangGraph, OpenAI GPT-4, Ollama (MedGemma:4b)
+- **External Services**: Twilio API (for emergency calling)
 
-## Architecture
+## ⚙️ Setup & Installation
 
-```
-User (Streamlit) → FastAPI Backend → AI Agent (LangGraph + LLM)
-                                        ├── Emergency Call Tool (Twilio)
-                                        ├── Ask Expert Tool (MedGemma)
-                                        └── Find Therapists Tool
-```
-
-## Getting Started
-
-### Prerequisites
-- Python 3.11+
-- [uv](https://docs.astral.sh/uv/) for dependency management
-- [Ollama](https://ollama.com/) installed locally (for MedGemma)
-- A Twilio account (for the emergency call feature)
-
-### Setup
-
-1. Clone the repo
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/apoorvayadav/safespace-ai-therapist.git
-   cd safespace-ai-therapist
+   git clone https://github.com/ABHISHEK27Y/project3.git
+   cd project3
    ```
 
-2. Install dependencies
-   ```bash
-   uv sync
-   ```
-   This sets up a virtual environment and installs everything from `uv.lock`.
-
-3. Add your environment variables
-
-   Create a `.env` file in the project root:
+2. **Environment Variables**:
+   Create a `.env` file in the `backend` directory and add your API keys:
    ```env
-   OPENAI_API_KEY=your_key_here
-   TWILIO_ACCOUNT_SID=your_sid_here
-   TWILIO_AUTH_TOKEN=your_token_here
-   TWILIO_PHONE_NUMBER=your_twilio_number
+   TWILIO_ACCOUNT_SID=your_sid
+   TWILIO_AUTH_TOKEN=your_token
+   TWILIO_FROM_NUMBER=your_twilio_number
+   EMERGENCY_CONTACT=emergency_number
+   OPENAI_API_KEY=your_openai_key
    ```
 
-4. Run the backend
+3. **Run the Backend**:
    ```bash
-   uv run uvicorn backend.main:app --reload
+   cd backend
+   uvicorn main:app --reload
    ```
 
-5. Run the frontend
+4. **Run the Frontend**:
+   Open a new terminal and run:
    ```bash
-   uv run streamlit run frontend.py
+   streamlit run frontend.py
    ```
 
-## Project Structure
+## 🎯 How it Works
 
-```
-safespace-ai-therapist/
-├── backend/           # FastAPI app + AI agent logic
-├── frontend.py        # Streamlit chat UI
-├── main.py            # Entry point
-├── pyproject.toml     # Project dependencies
-├── uv.lock             # Locked dependency versions
-└── README.md
-```
+1. The user interacts with the Streamlit UI, sending their thoughts or concerns.
+2. The FastAPI backend receives the request and processes it using the LangGraph agent.
+3. The agent dynamically decides which tool to use based on the user's input:
+   - `ask_mental_health_specialist`: For general therapeutic guidance.
+   - `emergency_call_tool`: To trigger Twilio if a crisis is detected.
+   - `find_nearby_therapists_by_location`: To provide local therapist contacts.
+4. The response is sent back to the frontend, indicating which tool was utilized.
 
-## Tech Stack
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.
 
-| Layer                | Tools |
-|-----------------------|-------|
-| Frontend               | Streamlit |
-| Backend                | FastAPI |
-| Agent / Orchestration | LangGraph, LangChain |
-| LLMs                   | MedGemma (Ollama), OpenAI |
-| Tools                  | Twilio (calls), location services |
-
-## Contributing
-
-Contributions and issues are welcome — feel free to open a PR or start a discussion.
-
-## License
-
-This project is open source under the MIT License.
-
-## Author
-
-Apoorva Yadav
+---
+*Disclaimer: This is an AI tool and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.*
