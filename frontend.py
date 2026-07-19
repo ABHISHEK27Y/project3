@@ -4,9 +4,9 @@ import requests
 
 BACKEND_URL = "http://localhost:8000/ask"
 
-st.set_page_config(page_title="SafeSpace - AI Therapist", page_icon="🧠", layout="centered")
+st.set_page_config(page_title="MindfulAI - AI Therapist", page_icon="🧠", layout="centered")
 
-st.title("🧠 SafeSpace")
+st.title("🧠 MindfulAI")
 st.subheader("Your Personal AI Mental Health Therapist")
 st.write("Welcome! This is a safe space to share your thoughts and feelings. We are here to listen and support you.")
 

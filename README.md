@@ -1,6 +1,6 @@
-# 🧠 SafeSpace - AI Mental Health Therapist
+# 🧠 MindfulAI - AI Mental Health Therapist
 
-SafeSpace is an AI-powered mental health therapist designed to provide empathetic, evidence-based guidance in a conversational tone. Built with a responsive Streamlit frontend and a robust FastAPI backend, the agent leverages advanced language models to offer a safe, supportive environment for users.
+MindfulAI is an AI-powered mental health therapist designed to provide empathetic, evidence-based guidance in a conversational tone. Built with a responsive Streamlit frontend and a robust FastAPI backend, the agent leverages advanced language models to offer a safe, supportive environment for users.
 
 ## 🚀 Features
 
